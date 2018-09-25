@@ -16,7 +16,7 @@ This Bot converts Text to various different unicode scripts.
 Available Commands are:
  - /frak - 𝔉𝔯𝔞𝔨𝔱𝔲𝔯
  - /bb - 𝔻𝕠𝕦𝕓𝕝𝕖𝕤𝕥𝕣𝕦𝕔𝕜
- - /scr 𝒮𝒸𝓇𝒾𝓅𝓉
+ - /scr - 𝒮𝒸𝓇𝒾𝓅𝓉
  - /mono - 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎
  - /sans - 𝖲𝖺𝗇𝗌-𝗌𝖾𝗋𝗂𝖿
  - /b - 𝐁𝐨𝐥𝐝
@@ -31,7 +31,7 @@ Available Commands are:
 txtCmds["help"] = _ -> """Available Commands:
  - /frak - 𝔉𝔯𝔞𝔨𝔱𝔲𝔯
  - /bb - 𝔻𝕠𝕦𝕓𝕝𝕖𝕤𝕥𝕣𝕦𝕔𝕜
- - /scr 𝒮𝒸𝓇𝒾𝓅𝓉
+ - /scr - 𝒮𝒸𝓇𝒾𝓅𝓉
  - /mono - 𝙼𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎
  - /sans - 𝖲𝖺𝗇𝗌-𝗌𝖾𝗋𝗂𝖿
  - /b - 𝐁𝐨𝐥𝐝
@@ -44,9 +44,8 @@ txtCmds["help"] = _ -> """Available Commands:
  - /bisans - 𝘽𝙤𝙡𝙙 𝙞𝙩𝙖𝙡𝙞𝙘 𝙎𝙖𝙣𝙨"""
 
 function inlineQueryHandle(s)
-	return InlineQueryResultArticle[
-			InlineQueryResultArticle(string(UUIDs.uuid4()),
-               name, tostyle(s)) 
+	return InlineQueryResultArticle[ InlineQueryResultArticle(string(UUIDs.uuid4()),
+					string(name,": ",tostyle(s)), tostyle(s)) 
 			for (name, tostyle) in Tofrak.styles ]
 end
 
