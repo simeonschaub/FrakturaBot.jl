@@ -66,24 +66,15 @@ styles = Dict{String, Function}()
 				      						   'R'=>'ℝ', 'Z'=>'ℤ')
 @unicodeconversion scr styles 119899 0 Dict('B'=>'ℬ', 'E'=>'ℰ', 'F'=>'ℱ', 'H'=>'ℋ', 'I'=>'ℐ', 'L'=>'ℒ',
 				      					   'M'=>'ℳ', 'R'=>'ℛ') Dict('e'=>'ℯ', 'g'=>'ℊ', 'o'=>'ℴ') 
-@unicodeconversion bfrak styles 120107 0
-@unicodeconversion bscr styles 119951 0
-@unicodeconversion b styles 119743 0
+@unicodeconversion bfrak styles 120107 120734
+@unicodeconversion bscr styles 119951 120734
+@unicodeconversion b styles 119743 120734
 @unicodeconversion it styles 119795 0 Dict() Dict('h'=>'ℎ')
-@unicodeconversion bi styles 119847 0
+@unicodeconversion bi styles 119847 120734
 @unicodeconversion sans styles 120159 120754
 @unicodeconversion bsans styles 120211 120764
 @unicodeconversion isans styles 120263 120754
 @unicodeconversion bisans styles 120315 120764
 @unicodeconversion mono styles 120367 120774
-
-function tostyle(s::String, style::String="frak")
-	f=tofrak
-	try f = styles[style]
-	catch
-		@warn "Style not available"
-		return s end #error("Style not available") end
-	return f(s)
-end
 
 end
