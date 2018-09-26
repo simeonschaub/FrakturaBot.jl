@@ -43,10 +43,12 @@ txtCmds["help"] = _ -> """Available Commands:
  - /isans - 𝘐𝘵𝘢𝘭𝘪𝘤 𝘚𝘢𝘯𝘴
  - /bisans - 𝘽𝙤𝙡𝙙 𝙞𝙩𝙖𝙡𝙞𝙘 𝙎𝙖𝙣𝙨"""
 
+stylenames = [ name |> uppercasefirst |> tostyle for (name, tostyle) in Tofrak.styles ]
+
 function inlineQueryHandle(s)
 	return InlineQueryResultArticle[ InlineQueryResultArticle(string(UUIDs.uuid4()),
-					string(name,": ",tostyle(s)), tostyle(s)) 
-			for (name, tostyle) in Tofrak.styles ]
+					name, tostyle(s)) 
+				for (name, tostyle) in zip(stylenames, values(Tofrak.styles)) ]
 end
 
 t = @async startBot(botApi; textHandle = txtCmds, inlineQueryHandle=inlineQueryHandle)
